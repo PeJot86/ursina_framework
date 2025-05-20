@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+.venv/
+env/
+ENV/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# VSCode
+.vscode/
+
+# Ursina / Panda3D runtime stuff
+*.bam
+*.ursinamesh
+*.log
+*.egg
+*.pdb
+
+# macOS / Windows / Linux
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# Test / debug output
+logs/
+*.log
+
+# Asset cache
+**/__cache__/

@@ -1,0 +1,30 @@
+ursina_framework/
+│
+├── main.py
+├── requirements.txt
+│
+├── engine/                   # Framework: silnik gry
+│   ├── core/
+│   │   ├── app.py           # GameApp: start, run, sceny, pluginy
+│   │   └── scene_manager.py # Zarządzanie scenami
+│   │
+│   ├── plugins/             # Pluginy frameworka
+│   │   ├── loader.py        # Ładowarka pluginów
+│   │   └── example_plugin.py
+│   │
+│   └── utils/               # Narzędzia pomocnicze (logger, config, animacje itd.)
+│
+├── game/                    # Właściwa gra użytkownika
+│   ├── scenes/
+│   │   └── menu_scene.py    # Scena menu
+│   │
+│   ├── entities/            # Przeciwnicy, budynki, kafle itp.
+│   ├── logic/               # Logika gry (reguły, ekonomia, AI)
+│   └── config/              # Pliki JSON, parametry, dane wejściowe
+│
+├── assets/                  # Modele, dźwięki, tekstury
+│   ├── models/
+│   ├── textures/
+│   └── audio/
+│
+└── savegames/               # Zapisane gry
