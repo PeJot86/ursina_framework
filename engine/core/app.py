@@ -8,8 +8,8 @@ class GameApp:
     def __init__(self):
         print("[INIT] Tworzenie aplikacji gry")
         self.app = Ursina()
+        self.app.input = self.input 
         
-
         self.scene_manager = SceneManager()
         self.scene_manager.add_scene("menu", MenuScene(self.scene_manager))
         self.scene_manager.add_scene("game", GameScene(self.scene_manager))
@@ -30,3 +30,10 @@ class GameApp:
             if hasattr(plugin, "update"):
                 plugin.update()
         self.scene_manager.update()
+    
+    def input(self, key):
+        print(f"[DEBUG] GLOBAL INPUT: {key}")  # ← musi się pojawić w konsoli
+
+        if self.scene_manager.current_scene and hasattr(self.scene_manager.current_scene, 'input'):
+            self.scene_manager.current_scene.input(key)
+
