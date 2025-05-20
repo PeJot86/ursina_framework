@@ -1,5 +1,6 @@
 from ursina import *
 from game.scenes.base_scene import BaseScene
+from engine.ui.components.button import UIButton
 
 class GameScene(BaseScene):
     def __init__(self, manager):
@@ -9,13 +10,14 @@ class GameScene(BaseScene):
 
     def on_enter(self):
         print("[GAME] Start gry")
-        self.ui_root = Entity()
-        self.button = Button(
+        self.ui_root = Entity(parent=camera.ui)
+
+        self.button = UIButton(
             text="Menu",
             parent=self.ui_root,
-            scale=(0.2, 0.1),
-            y=-0.4,
-            on_click=Func(self.return_to_menu)  # ✅ tu też używamy Func()
+            position=(0, -0.3),
+            scale=(0.3, 0.1),
+            on_click=self.return_to_menu
         )
 
     def return_to_menu(self):

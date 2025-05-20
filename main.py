@@ -1,4 +1,3 @@
-
 from engine.core.app import GameApp
 
 if __name__ == '__main__':

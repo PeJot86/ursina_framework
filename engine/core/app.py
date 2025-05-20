@@ -1,5 +1,4 @@
-
-from ursina import Ursina
+from ursina import Ursina, camera
 from engine.core.scene_manager import SceneManager
 from engine.plugins.loader import load_plugins
 from game.scenes.menu_scene import MenuScene
@@ -9,6 +8,7 @@ class GameApp:
     def __init__(self):
         print("[INIT] Tworzenie aplikacji gry")
         self.app = Ursina()
+        
 
         self.scene_manager = SceneManager()
         self.scene_manager.add_scene("menu", MenuScene(self.scene_manager))
