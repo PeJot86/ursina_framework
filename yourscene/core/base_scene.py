@@ -1,6 +1,6 @@
 from ursina import Entity, camera, destroy
-from engine.ui.components.ui_title_bar import UITitleBar
-from engine.ui.ui_manager import ui_manager
+from yourscene.ui.components.ui_title_bar import UITitleBar
+from yourscene.ui.ui_manager import ui_manager
 
 class BaseScene:
     def __init__(self, scene_manager=None):

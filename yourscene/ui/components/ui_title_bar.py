@@ -13,7 +13,7 @@ class UITitleBar(Entity):
             parent=self,
             model='quad',
             color=color.black33,
-            scale=(1.6, 0.12),
+            scale=(1.6, 0.07),
             y=0.42,
             z=0
         )

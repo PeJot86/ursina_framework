@@ -1,5 +1,5 @@
 from ursina import *
-from game.scenes.base_scene import BaseScene
+from yourscene.core.base_scene import BaseScene
 
 class MapEditorScene(BaseScene):
     def __init__(self, manager):

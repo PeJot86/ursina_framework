@@ -1,6 +1,6 @@
 from ursina import Ursina, color, window
-from engine.core.scene_manager import SceneManager
-from engine.plugins.loader import load_plugins
+from yourscene.core.scene_manager import SceneManager
+from yourscene.plugins.loader import load_plugins
 from game.scenes.menu_scene import MenuScene
 from game.scenes.game_scene import GameScene
 from game.scenes.map_editor_scene import MapEditorScene

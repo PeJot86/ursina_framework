@@ -1,6 +1,6 @@
 from ursina import *
-from game.scenes.base_scene import BaseScene
-from engine.ui.components.button import UIButton
+from yourscene.core.base_scene import BaseScene
+from yourscene.ui.components.button import UIButton
 
 class GameScene(BaseScene):
     def __init__(self, manager):
