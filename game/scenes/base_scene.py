@@ -1,20 +1,31 @@
 from ursina import Entity, camera, destroy
 from engine.ui.components.ui_title_bar import UITitleBar
+from engine.ui.ui_manager import ui_manager
 
 class BaseScene:
-    def __init__(self):
+    def __init__(self, scene_manager=None):
+        self.scene_manager = scene_manager
         self.ui_root = None
         self.title_bar = None
+        self.window = None  # ⬅⬅⬅ to chroni przed błędem
 
     def on_enter(self):
         self.ui_root = Entity(parent=camera.ui)
-        self.title_bar = UITitleBar(parent=self.ui_root)
+        show_menu = self.__class__.__name__ != 'MenuScene'
+        self.title_bar = UITitleBar(scene_manager=self.scene_manager, parent=self.ui_root, show_menu_button=show_menu)
+
 
     def on_exit(self):
+       
+        ui_manager.close_all()
+
+        for child in list(camera.ui.children):
+            destroy(child)
+
         if self.ui_root:
             destroy(self.ui_root)
             self.ui_root = None
-            self.title_bar = None
 
-    def update(self):
-        pass
+        self.title_bar = None
+
+

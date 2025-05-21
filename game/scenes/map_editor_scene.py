@@ -3,6 +3,7 @@ from game.scenes.base_scene import BaseScene
 
 class MapEditorScene(BaseScene):
     def __init__(self, manager):
+        super().__init__(scene_manager=manager)
         self.manager = manager
         self.tiles = []
         self.camera = None
@@ -10,7 +11,7 @@ class MapEditorScene(BaseScene):
 
     def on_enter(self):
         print("[EDITOR] Wchodzenie do edytora mapy")
-
+        super().on_enter() # górny pasek
         # Ustawienie kamery edytora
         self.camera = EditorCamera()
         self.camera.position = (0, 20, -20)
@@ -31,15 +32,6 @@ class MapEditorScene(BaseScene):
                 row.append(tile)
             self.tiles.append(row)
 
-        # UI: Przycisk powrotu
-        self.ui_root = Entity(parent=camera.ui)
-        self.back_button = Button(
-            text="Wróć do menu",
-            parent=self.ui_root,
-            scale=(0.2, 0.08),
-            position=(-0.7, 0.45),
-            on_click=self.return_to_menu
-        )
 
     def return_to_menu(self):
         self.manager.set_scene("menu")

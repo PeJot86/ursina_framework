@@ -15,7 +15,6 @@ class GameApp:
         window.fullscreen = False
         window.borderless = False
         window.color = color.black
-        window.title = "Y'Urscene "
     
         self.app.input = self.input 
         

@@ -11,13 +11,17 @@ import time
 
 class MenuScene(BaseScene):
     def __init__(self, manager):
-        super().on_enter()
+    
+        super().__init__(scene_manager=manager)
         self.manager = manager
         self.window = None
         self.last_esc_time = 0
 
     def on_enter(self):
+        for child in list(camera.ui.children):
+            destroy(child)
         print("[MENU] Wchodzenie do sceny menu")
+        super().on_enter()
 
         self.window = UIWindow(title='Menu', size=(0.5, 0.4), position=(0, 0))
         ui_manager.open_window(self.window)
@@ -60,7 +64,12 @@ class MenuScene(BaseScene):
         self.manager.set_scene("game")
 
     def on_exit(self):
-        print("[MENU] Wychodzenie z menu")
-        if self.window:
-            destroy(self.window)
-            self.window = None
+        print("[MENU] Wychodzenie z menu (on_exit)")
+
+        for child in list(camera.ui.children):
+            print("[MENU] Usuwam z camera.ui:", child)
+            destroy(child)
+
+        self.window = None
+
+
