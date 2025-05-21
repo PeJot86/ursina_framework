@@ -1,4 +1,4 @@
-# Ursina Game Framework
+#  Y'Urscene - Ursina Game Framework
 
 A modular game framework built with [Ursina Engine](https://www.ursinaengine.org/) in Python. Designed for rapid prototyping and clean separation between scenes, plugins, and core systems.
 
