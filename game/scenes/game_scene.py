@@ -12,11 +12,11 @@ class GameScene(BaseScene):
         print("[GAME] Start gry")
         self.ui_root = Entity(parent=camera.ui)
 
-        self.button = UIButton(
-            text="Menu",
+        self.back_button = Button(
+            text="Wróć do menu",
             parent=self.ui_root,
-            position=(0, -0.3),
-            scale=(0.3, 0.1),
+            scale=(0.2, 0.08),
+            position=(-0.7, 0.45),
             on_click=self.return_to_menu
         )
 

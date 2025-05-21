@@ -1,18 +1,28 @@
-from ursina import Ursina, camera
+from ursina import Ursina, color, window
 from engine.core.scene_manager import SceneManager
 from engine.plugins.loader import load_plugins
 from game.scenes.menu_scene import MenuScene
 from game.scenes.game_scene import GameScene
+from game.scenes.map_editor_scene import MapEditorScene
 
 class GameApp:
     def __init__(self):
         print("[INIT] Tworzenie aplikacji gry")
         self.app = Ursina()
+        
+        window.size = (1280, 720)
+        window.position = (100, 100)
+        window.fullscreen = False
+        window.borderless = False
+        window.color = color.black
+        window.title = "Y'Urscene "
+    
         self.app.input = self.input 
         
         self.scene_manager = SceneManager()
         self.scene_manager.add_scene("menu", MenuScene(self.scene_manager))
         self.scene_manager.add_scene("game", GameScene(self.scene_manager))
+        self.scene_manager.add_scene("editor", MapEditorScene(self.scene_manager))
 
         self.plugins = load_plugins()
         for plugin in self.plugins:
