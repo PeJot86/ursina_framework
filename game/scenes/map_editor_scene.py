@@ -7,17 +7,27 @@ class MapEditorScene(BaseScene):
         self.manager = manager
         self.tiles = []
         self.camera = None
-        self.ui_root = None
+
+    def bind_input(self):
+        print("[SCENE] bind_input() uruchomione!")  # ← powinno się pojawić!
+        im = self.manager.app.input_manager
+        im.bind('escape', self.return_to_menu)
+        im.bind('ctrl+z', self.undo)
+        im.bind('ctrl+s', self.quick_save)
+        im.bind('ctrl+shift+s', self.save_as)
 
     def on_enter(self):
         print("[EDITOR] Wchodzenie do edytora mapy")
-        super().on_enter() # górny pasek
-        # Ustawienie kamery edytora
+        print(f"[CHECK] Typ self: {type(self)}")
+        print(f"[CHECK] bind_input pochodzi z: {self.bind_input.__func__.__qualname__}")
+        print(f"[CHECK] BaseScene z którego dziedziczymy: {BaseScene}")
+
+        super().on_enter()
+
         self.camera = EditorCamera()
         self.camera.position = (0, 20, -20)
         self.camera.rotation_x = 45
 
-        # Tworzenie siatki 10x10
         for x in range(10):
             row = []
             for z in range(10):
@@ -32,16 +42,6 @@ class MapEditorScene(BaseScene):
                 row.append(tile)
             self.tiles.append(row)
 
-
-    def return_to_menu(self):
-        self.manager.set_scene("menu")
-
-    def update(self):
-        if mouse.left:
-            hit = mouse.hovered_entity
-            if hit and hit in sum(self.tiles, []):
-                hit.color = color.azure
-
     def on_exit(self):
         print("[EDITOR] Wychodzenie z edytora")
         for row in self.tiles:
@@ -51,6 +51,23 @@ class MapEditorScene(BaseScene):
         if self.camera:
             destroy(self.camera)
             self.camera = None
-        if self.ui_root:
-            destroy(self.ui_root)
-            self.ui_root = None
+
+    def update(self):
+        if mouse.left:
+            hit = mouse.hovered_entity
+            if hit and hit in sum(self.tiles, []):
+                hit.color = color.azure
+
+
+    def return_to_menu(self):
+        print("[SCENE] Powrót do menu")
+        self.manager.set_scene("menu")
+
+    def undo(self):
+        print("[SCENE] Cofnięcie akcji")
+
+    def quick_save(self):
+        print("[SCENE] Szybki zapis")
+
+    def save_as(self):
+        print("[SCENE] Zapisz jako...")

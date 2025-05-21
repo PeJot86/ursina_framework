@@ -21,6 +21,10 @@ class GameScene(BaseScene):
             destroy(self.window)
             print("[MENU] Zniszczono okno menu")
             self.window = None
+            
+            
+    def bind_input(self):
+        self.manager.app.input_manager.bind('escape', self.return_to_menu)
 
 
     def update(self):

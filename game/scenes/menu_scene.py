@@ -72,4 +72,3 @@ class MenuScene(BaseScene):
 
         self.window = None
 
-
