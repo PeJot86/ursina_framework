@@ -1,4 +1,4 @@
-from yourscene.core.app import GameApp
+from yurscene.core.app import GameApp
 
 if __name__ == '__main__':
     app = GameApp()

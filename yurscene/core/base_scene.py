@@ -1,13 +1,14 @@
-from ursina import Entity, camera, destroy
-from yourscene.ui.components.ui_title_bar import UITitleBar
-from yourscene.ui.ui_manager import ui_manager
+from ursina import Entity, camera, destroy, mouse
+from yurscene.ui.components.ui_title_bar import UITitleBar
+from yurscene.ui.ui_manager import ui_manager
 
-class BaseScene:
+class BaseScene(Entity):
     def __init__(self, scene_manager=None):
+        super().__init__()
         self.scene_manager = scene_manager
         self.ui_root = None
         self.title_bar = None
-        self.window = None  # ⬅⬅⬅ to chroni przed błędem
+        self.window = None  
 
     def input(self, key):
         """Opcjonalna metoda do nadpisania w klasach potomnych."""
@@ -19,6 +20,8 @@ class BaseScene:
 
     def on_enter(self):
         print("[BASE] BaseScene.on_enter() działa")
+        mouse.locked = False
+        mouse.visible = True
         self.ui_root = Entity(parent=camera.ui)
         show_menu = self.__class__.__name__ != 'MenuScene'
         self.title_bar = UITitleBar(scene_manager=self.scene_manager, parent=self.ui_root, show_menu_button=show_menu)

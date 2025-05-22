@@ -1,11 +1,11 @@
 from ursina import *
-from yourscene.core.base_scene import BaseScene
-from yourscene.ui.components.panel import UIPanel
-from yourscene.ui.components.button import UIButton
-from yourscene.ui.components.layout import UIColumn
-from yourscene.ui.components.text_input import UITextInput
-from yourscene.ui.components.window import UIWindow
-from yourscene.ui.ui_manager import ui_manager
+from yurscene.core.base_scene import BaseScene
+from yurscene.ui.components.panel import UIPanel
+from yurscene.ui.components.button import UIButton
+from yurscene.ui.components.layout import UIColumn
+from yurscene.ui.components.text_input import UITextInput
+from yurscene.ui.components.window import UIWindow
+from yurscene.ui.ui_manager import ui_manager
 import time
 
 

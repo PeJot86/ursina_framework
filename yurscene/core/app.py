@@ -1,10 +1,10 @@
-from ursina import Ursina, color, window
-from yourscene.core.scene_manager import SceneManager
-from yourscene.core.input_manager import InputManager
-from yourscene.plugins.loader import load_plugins
+from ursina import Ursina, color, window, Entity, mouse
+from yurscene.core.scene_manager import SceneManager
+from yurscene.core.input_manager import InputManager
+from yurscene.plugins.loader import load_plugins
 from game.scenes.menu_scene import MenuScene
 from game.scenes.game_scene import GameScene
-from game.scenes.map_editor_scene import MapEditorScene
+from yurscene.editor.map_editor_scene import MapEditorScene
 
 class GameApp:
     def __init__(self):
@@ -18,7 +18,6 @@ class GameApp:
         window.color = color.black
 
         self.input_manager = InputManager()
-        self.app.input = self.input 
         
         self.scene_manager = SceneManager(app=self)
         self.scene_manager.add_scene("menu", MenuScene(self.scene_manager))
@@ -40,12 +39,11 @@ class GameApp:
         self.app.run()
 
     def update(self):
+        mouse.update()  # ← To naprawia mouse.velocity i hovered_entity
         for plugin in self.plugins:
             if hasattr(plugin, "update"):
                 plugin.update()
         self.scene_manager.update()
-        self.input_manager.update()
-
 
     def input(self, key):
         print(f"[DEBUG] input: {key}")

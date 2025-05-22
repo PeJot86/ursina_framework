@@ -3,7 +3,7 @@ ursina_framework/
 ├── main.py
 ├── requirements.txt
 │
-├── engine/                   # Framework: silnik gry
+├── yourscene/                   # Framework: silnik gry
 │   ├── core/
 │   │   ├── app.py           # GameApp: start, run, sceny, pluginy
 │   │   └── scene_manager.py # Zarządzanie scenami

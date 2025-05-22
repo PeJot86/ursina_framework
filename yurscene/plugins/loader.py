@@ -1,4 +1,4 @@
-from yourscene.plugins.decorator import plugin_registry
+from yurscene.plugins.decorator import plugin_registry
 
 def load_plugins():
     print(f"[PLUGINS] Ładowanie {len(plugin_registry)} pluginów...")
